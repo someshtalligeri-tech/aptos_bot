@@ -1,8 +1,12 @@
 const { Telegraf } = require('telegraf');
 require('dotenv').config();
 
-// Initialize bot
-const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
+// Initialize bot with webhook mode
+const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN, {
+    telegram: {
+        webhookReply: true
+    }
+});
 
 // Add all your bot commands here
 bot.command('start', (ctx) => {

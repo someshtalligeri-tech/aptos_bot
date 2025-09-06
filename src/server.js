@@ -8,6 +8,10 @@ const app = express();
 // Initialize bot
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN);
 
+// Enable graceful stop
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
+
 // Your existing bot code here...
 // (All the command handlers and event definitions remain the same)
 
